@@ -22,7 +22,10 @@ NSString *javascriptNamespace = @"ios";
     self.webView.navigationDelegate = self;
     self.webView.allowsBackForwardNavigationGestures = YES;
     [self.webView setNavigationDelegate:self];
-    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
 
 -(WKWebViewConfiguration*) webConfig {
@@ -52,4 +55,17 @@ NSString *javascriptNamespace = @"ios";
     
 }
 
+#pragma mark - WKNavigationDelegate
+- (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation {
+    NSLog(@"1. didCommitNavigation");
+}
+ 
+- (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
+    NSLog(@"2. didFinishNavigation");
+}
+ 
+- (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
+    NSLog(@"3. didFailNavigation");
+}
+ 
 @end
