@@ -3,6 +3,12 @@
 
 @implementation WebViewContainer
 
++ (void) loadURL(NSString *)requestURLString:(WKWebView *) webView {
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:requestURLString]];
+    
+    [webView loadRequest:request];
+}
+    
 + (void)setURL:(NSString *)requestURLString:(WKWebView *) webView {
     NSURL *url = [[NSURL alloc] initWithString: requestURLString];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL: url
