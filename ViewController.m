@@ -6,6 +6,7 @@
     @property (strong, nonatomic) IBOutlet WKWebView *webView;
     @property (nonatomic, strong) WKWebViewConfiguration * webConfig;
     @property (nonatomic, strong) WKPreferences * webPreference;
+    @property (nonatomic, strong) WKProcessPool * webProcessPool;
 @end
 
 #pragma mark - Implementation
@@ -35,10 +36,19 @@ NSString *javascriptNamespace = @"ios";
         _webPreference.javaScriptCanOpenWindowsAutomatically = YES;
     }
     
+    if (!_webProcessPool) {
+        _webProcessPool= [[WKProcessPool alloc] init];
+    }
+    
     if (!_webConfig) {
         _webConfig = [[WKWebViewConfiguration alloc]init];
+
+        // Set Process Pool
+        if (!_webProcessPool) {
+            _webConfig.processPool = _webProcessPool;
+        }
         
-        // set Preference
+        // Set Preference
         if (!_webPreference) {
             _webConfig.preferences = _webPreference;
         }
