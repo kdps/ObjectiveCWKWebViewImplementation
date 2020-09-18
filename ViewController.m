@@ -10,4 +10,19 @@
 #pragma mark - Implementation
 @implementation ViewController
 
+    
+-(WKWebViewConfiguration*) webConfig {
+    
+    if (!_webConfig) {
+        _webConfig = [[WKWebViewConfiguration alloc]init];
+        
+        WKUserContentController* userController = [[WKUserContentController alloc]init];
+        
+        _webConfig.userContentController = userController;
+        
+    }
+    return _webConfig;
+    
+}
+
 @end
