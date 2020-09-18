@@ -55,6 +55,18 @@ NSString *javascriptNamespace = @"ios";
     
 }
 
+-(void) presentWebviewControllerWithRequest:(NSURLRequest *)urlRequest {
+    NSLog(@"presentWebviewControllerWithRequest");
+}
+
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+}
+
+#pragma mark - WKNavigationDelegate Methods
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(nonnull WKNavigationAction *)navigationAction decisionHandler:(nonnull void (^)(WKNavigationActionPolicy))decisionHandler {
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+
 #pragma mark - WKNavigationDelegate
 - (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation {
     NSLog(@"1. didCommitNavigation");
